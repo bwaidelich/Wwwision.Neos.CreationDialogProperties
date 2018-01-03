@@ -1,0 +1,20 @@
+{
+    "name": "wwwision/neos-creationdialogproperties",
+    "description": "Simple package to easily expose Node properties to the CreationDialog that's available since Neos 3.3.",
+    "type": "neos-package",
+    "license": "MIT",
+    "require": {
+        "php": "^7.1",
+        "neos/neos": "^3.3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wwwision\\Neos\\CreationDialogProperties\\": "Classes"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Wwwision.Neos.CreationDialogProperties"
+        }
+    }
+}
