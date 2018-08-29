@@ -1,3 +1,8 @@
+'Neos.Neos:Document':
+  postprocessors:
+    'CreationDialogPostprocessor':
+      postprocessor: 'Wwwision\Neos\CreationDialogProperties\CreationDialogPostprocessor'
+
 'Neos.Neos:Content':
   postprocessors:
     'CreationDialogPostprocessor':
