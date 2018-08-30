@@ -4,7 +4,6 @@
     "type": "neos-package",
     "license": "MIT",
     "require": {
-        "php": "^7.1",
         "neos/neos": "^3.3.2 || ^4.0"
     },
     "autoload": {
