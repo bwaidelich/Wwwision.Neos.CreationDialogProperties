@@ -7,6 +7,7 @@ use Neos\Flow\Property\PropertyMapper;
 use Neos\Flow\Property\TypeConverter\PersistentObjectConverter;
 use Neos\Neos\Ui\NodeCreationHandler\NodeCreationHandlerInterface;
 use Neos\Utility\TypeHandling;
+use Neos\Utility\ObjectAccess;
 
 /**
  * A Node Creation Handler that takes the incoming data from the Creation Dialog and sets the corresponding node property
@@ -36,8 +37,11 @@ class NodeCreationHandler implements NodeCreationHandlerInterface
             if ($propertyType !== 'references' && $propertyType !== 'reference' && $propertyType !== TypeHandling::getTypeForValue($propertyValue)) {
                 $propertyValue = $this->propertyMapper->convert($propertyValue, $propertyType, $propertyMappingConfiguration);
             }
-            $node->setProperty($propertyName, $propertyValue);
-
+            if (substr($propertyName, 0, 1) === '_') {
+                ObjectAccess::setProperty($node, substr($propertyName, 1), $propertyValue);
+            } else {
+                $node->setProperty($propertyName, $propertyValue);
+            }
         }
     }
 }
