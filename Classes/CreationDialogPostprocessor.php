@@ -86,10 +86,25 @@ class CreationDialogPostprocessor implements NodeTypePostprocessorInterface
         if (isset($configuration['validation'])) {
             $convertedConfiguration['validation'] = $configuration['validation'];
         }
+
         $convertedConfiguration['ui']['editor'] = $configuration['ui']['inspector']['editor'] ?? 'Neos.Neos/Inspector/Editors/TextFieldEditor';
+
+        if ($convertedConfiguration['ui']['editor'] == 'Neos.Neos/Inspector/Editors/ImageEditor') {
+            $convertedConfiguration['ui']['editor'] = 'Neos.Neos/Inspector/Editors/AssetEditor';
+
+            if (!isset($configuration['ui']['inspector']['editorOptions']['accept'])) {
+                $convertedConfiguration['ui']['editorOptions']['accept'] = 'image/*';
+            }
+        }
+
         if (isset($configuration['ui']['inspector']['editorOptions'])) {
             $convertedConfiguration['ui']['editorOptions'] = $configuration['ui']['inspector']['editorOptions'];
         }
+
+        if ($convertedConfiguration['ui']['editor'] == 'Neos.Neos/Inspector/Editors/AssetEditor') {
+            $convertedConfiguration['ui']['editorOptions']['features']['mediaBrowser'] = false;
+        }
+
         return $convertedConfiguration;
     }
 }
