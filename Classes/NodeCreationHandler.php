@@ -37,7 +37,7 @@ class NodeCreationHandler implements NodeCreationHandlerInterface
             if ($propertyType !== 'references' && $propertyType !== 'reference' && $propertyType !== TypeHandling::getTypeForValue($propertyValue)) {
                 $propertyValue = $this->propertyMapper->convert($propertyValue, $propertyType, $propertyMappingConfiguration);
             }
-            if ($propertyName{0} === '_') {
+            if (substr($propertyName, 0, 1) === '_') {
                 ObjectAccess::setProperty($node, substr($propertyName, 1), $propertyValue);
             } else {
                 $node->setProperty($propertyName, $propertyValue);
