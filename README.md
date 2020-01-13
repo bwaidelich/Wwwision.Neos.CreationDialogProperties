@@ -11,6 +11,8 @@ By default a custom *nodeCreationHandler* has to be implemented to process the d
 This package provides a generic handler that allows to easily expose certain node properties to be displayed
 in the dialog.
 
+With Neos 5.1. the functionality of this package has been introduced to the core (see [documentation](https://docs.neos.io/cms/manual/content-repository/node-creation-dialog#add-node-properties-to-the-node-creation-dialog)). Thus there is no version of this package compatible for Neos 5.1 and above.
+
 ## Usage
 
 1. Install package via `composer require wwwision/neos-creationdialogproperties`
