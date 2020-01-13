@@ -34,7 +34,7 @@ class NodeCreationHandler implements NodeCreationHandlerInterface
 
         foreach ($data as $propertyName => $propertyValue) {
             $propertyType = TypeHandling::normalizeType($node->getNodeType()->getPropertyType($propertyName));
-            if ($propertyType !== 'references' && $propertyType !== 'reference' && $propertyType !== TypeHandling::getTypeForValue($propertyValue)) {
+            if ($propertyValue !== '' && $propertyType !== 'references' && $propertyType !== 'reference' && $propertyType !== TypeHandling::getTypeForValue($propertyValue)) {
                 $propertyValue = $this->propertyMapper->convert($propertyValue, $propertyType, $propertyMappingConfiguration);
             }
             if (substr($propertyName, 0, 1) === '_') {
